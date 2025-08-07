@@ -1,6 +1,6 @@
-import NextAuth from "next-auth"
-import { SupabaseAdapter } from "@auth/supabase-adapter"
-import type { NextAuthConfig } from "next-auth"
+import NextAuth from 'next-auth'
+import { SupabaseAdapter } from '@auth/supabase-adapter'
+import type { NextAuthConfig } from 'next-auth'
 
 export const config = {
   adapter: SupabaseAdapter({
@@ -9,18 +9,18 @@ export const config = {
   }),
   providers: [
     {
-      id: "huggingface",
-      name: "Hugging Face",
-      type: "oauth",
+      id: 'huggingface',
+      name: 'Hugging Face',
+      type: 'oauth',
       authorization: {
-        url: "https://huggingface.co/oauth/authorize",
+        url: 'https://huggingface.co/oauth/authorize',
         params: {
-          scope: "read-repos",
-          response_type: "code",
+          scope: 'read-repos',
+          response_type: 'code',
         },
       },
-      token: "https://huggingface.co/oauth/token",
-      userinfo: "https://huggingface.co/api/whoami",
+      token: 'https://huggingface.co/oauth/token',
+      userinfo: 'https://huggingface.co/api/whoami',
       clientId: process.env.HUGGINGFACE_CLIENT_ID,
       clientSecret: process.env.HUGGINGFACE_CLIENT_SECRET,
       profile(profile) {
@@ -55,13 +55,13 @@ export const config = {
     },
   },
   pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
+    signIn: '/auth/signin',
+    error: '/auth/error',
   },
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
-  debug: process.env.NODE_ENV === "development",
+  debug: process.env.NODE_ENV === 'development',
 } satisfies NextAuthConfig
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config)
