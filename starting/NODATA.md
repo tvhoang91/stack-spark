@@ -1,0 +1,1 @@
+Example CLAUDE.md file to stater Hooby Project with No Data and Database
